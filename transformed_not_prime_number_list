@@ -1,0 +1,32 @@
+#create list number 1-100 dalam urutan terbalik
+numbers = list(range(100, 0, -1))
+
+#create function to check prime number
+def is_prime(n):
+    if n < 2:
+        return False
+    if n == 2:
+        return True  # 2 is the lowest prim number
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+#create list for result using list comprehension
+not_prime_number = [num for num in numbers if not is_prime(num)]
+
+# loop changes for certain number to some words
+result = []
+for num in not_prime_number:
+    if num % 3 == 0 and num % 5 == 0:
+        result.append("FooBar")
+    elif num % 3 == 0:
+        result.append("Foo")
+    elif num % 5 == 0:
+        result.append("Bar")
+    else:
+        result.append(str(num))
+
+print(result)
